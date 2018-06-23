@@ -1,0 +1,15 @@
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\bin\x64\Calculatrice exe\calculette.exe.config
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\bin\x64\Calculatrice exe\calculette.exe
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\bin\x64\Calculatrice exe\MathParser.org-mXparser.Net452.dll
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\MainWindow.g.cs
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\App.g.cs
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\calculette_Content.g.cs
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\calculette_MarkupCompile.cache
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\calculette_MarkupCompile.lref
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\MainWindow.baml
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\calculette.g.resources
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\calculette.Properties.Resources.resources
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\calculette.csproj.GenerateResource.cache
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\calculette.csproj.CoreCompileInputs.cache
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\calculette.csproj.CopyComplete
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\calculette.exe

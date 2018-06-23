@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\Debug\
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\Calculatrice exe\
 calculette
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\App.xaml
 11151548125
 13947318371
-6-2004105558
+101413586034
 14-2083858483
 MainWindow.xaml;
 
-False
+True
 

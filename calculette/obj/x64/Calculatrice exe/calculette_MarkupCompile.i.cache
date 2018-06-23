@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\Debug\
+C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\obj\x64\Calculatrice exe\
 calculette
 none
 false
-DEBUG;TRACE
+
 C:\Users\cuvil\Documents\Workspace\DotNet\Calculatrice\calculette\App.xaml
 11151548125
 13947318371
-6-2004105558
+10-1367951426
 14-2083858483
 MainWindow.xaml;
 
-False
+True
 
