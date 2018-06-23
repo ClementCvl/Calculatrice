@@ -1,0 +1,253 @@
+﻿<Window x:Class="calculette.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:calculette"
+        mc:Ignorable="d"
+        Title="Calculatrice" Height="800" Width="600"
+        DataContext="{Binding ElementName=MyWindow}"
+        PreviewKeyDown="OnKeyDownHandler" >
+
+
+    <Window.Resources>        
+        <Style TargetType="Button" x:Key="ButtonStyle">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonNumberStyle" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ButtonOperationStyle" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Background" Value="Blue"/>
+            <Setter Property="Foreground" Value="FloralWhite"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ButtonCStyle" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Foreground" Value="NavajoWhite"/>
+        </Style>
+        
+        <Style TargetType="Button" x:Key="ButtonCEStyle" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ButtonScient" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style TargetType="ListBox" x:Key="HistoList">
+            <Setter Property="Background" Value="SkyBlue"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>           
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="textStyle">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="Margin" Value="5, 0"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="textStyleHisto" BasedOn="{StaticResource textStyle}">
+            <Setter Property="Background" Value="SkyBlue"/>
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ButtonHisto">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+
+    </Window.Resources>
+
+
+    <Grid Background="Black">
+
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox ItemsSource="{Binding Path=Historique}" HorizontalContentAlignment="Right" Style="{StaticResource HistoList}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <Button Style="{StaticResource ButtonHisto}" Click="CopyPasteOperation">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource textStyleHisto}" Text="{Binding Operation}" />
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource ButtonHisto}" Click="CopyPasteResult">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource textStyleHisto}" Text="{Binding Result}" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListBox>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource textStyle}" Text="{Binding CalcString}" Grid.Row="0" Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <TextBlock Style="{StaticResource textStyle}" Grid.Row="1" Grid.Column="0" Text="{Binding ResultString}" TextAlignment="Right"></TextBlock>
+            </Grid>
+        </Grid>
+
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Row="0" Grid.Column="0" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="(" Style="{StaticResource ButtonOperationStyle}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="1" Content="." Style="{StaticResource ButtonOperationStyle}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="2" Content=")" Style="{StaticResource ButtonOperationStyle}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="3" Content="C" Style="{StaticResource ButtonCStyle}" Click="Button_remove"/>
+                <Button Grid.Row="0" Grid.Column="4" Content="CE" Style="{StaticResource ButtonCEStyle}" Click="Button_delete"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="0" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="Modulo" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="1" Content="%" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="^" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="3" Content="ln" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="4" Content="log10" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="5" Content="Exp" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="0" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="Sin" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="1" Content="Tan" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="Cos" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="3" Content="ArcSin" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="4" Content="ArcTan" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="5" Content="ArcCos" Style="{StaticResource ButtonScient}" Click="Button_add"/>
+            </Grid>
+
+            <Grid Grid.Row="3" Grid.Column="0" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="7" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="1" Content="8" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="9" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="3" Content="+" Style="{StaticResource ButtonOperationStyle}" Click="Button_add"/>
+                <Button Grid.Row="0" Grid.Column="4" Content="-" Style="{StaticResource ButtonOperationStyle}" Click="Button_add"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Content="4" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="5" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+                <Button Grid.Row="1" Grid.Column="2" Content="6" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+                <Button Grid.Row="1" Grid.Column="3" Content="*" Style="{StaticResource ButtonOperationStyle}" Click="Button_add"/>
+                <Button Grid.Row="1" Grid.Column="4" Content="/" Style="{StaticResource ButtonOperationStyle}" Click="Button_add"/>
+
+                <Button Grid.Row="2" Grid.Column="0" Content="1" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+                <Button Grid.Row="2" Grid.Column="1" Content="2" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+                <Button Grid.Row="2" Grid.Column="2" Content="3" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+
+                <Button Grid.Row ="2" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="=" Style="{StaticResource ButtonOperationStyle}" Click="Button_valid"/>
+
+                <Button Grid.Row ="3" Grid.Column="0" Grid.ColumnSpan="3" Content="0" Style="{StaticResource ButtonNumberStyle}" Click="Button_add"/>
+
+            </Grid>
+
+
+
+        </Grid>
+
+
+
+    </Grid>
+
+</Window>
